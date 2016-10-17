@@ -1,0 +1,23 @@
+{
+  "name": "cucucmber-testrail",
+  "version": "1.0.0",
+  "description": "Pushes Cucumber Results from CircleCI to TestRails",
+  "main": "src/index.coffee",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Originate/cucumber-testrail.git"
+  },
+  "author": "Doreen Hakimi",
+  "license": "MIT",
+  "devDependencies": {
+    "co": "4.6.0",
+    "coffee-script": "1.11.1",
+    "minimist": "1.2.0",
+    "mz": "2.4.0",
+    "request": "2.75.0",
+    "yamljs": "0.2.8"
+  }
+}
