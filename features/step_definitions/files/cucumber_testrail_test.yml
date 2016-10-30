@@ -1,0 +1,16 @@
+testRailUrl: "https://drseuss.testrail.net/index.php?/"
+
+suites:
+
+  - suite:
+      project_id: 1
+      project_symbol: 'DSFish'
+      suite_id: 1
+      section_id: 10
+      testplan_id: 64
+
+  - suite:
+      project_id: 2
+      project_symbol: 'DSPlaces'
+      suite_id: 1
+      testplan_id: 85

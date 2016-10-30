@@ -1,0 +1,14 @@
+machine:
+  node:
+    version: 6.1.0
+
+test:
+
+  pre:
+    - node_modules/coffee-script/bin/coffee --compile --output lib/ src/
+    - mkdir -p $CIRCLE_TEST_REPORTS/cucumber
+
+  override:
+    - cucumber-js --format json:$CIRCLE_TEST_REPORTS/cucumber/tests.cucumber --format pretty
+
+  
