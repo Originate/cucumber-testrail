@@ -1,4 +1,4 @@
-testRailUrl: "https://drseuss.testrail.net/index.php?/"
+testrail_url: "https://drseuss.testrail.net/index.php?/"
 
 suites:
 

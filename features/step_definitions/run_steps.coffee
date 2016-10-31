@@ -1,6 +1,6 @@
 module.exports = ->
   #"([^"]*)" - string regex
-  @Given /^a TestRail API at "([^"]*)"$/, (url) ->
+  @Given /^a TestRail API at localhost:([^"]*)$/, (url) ->
     @listener.listen parseInt url
 
   @When /^I run the script "cucumber-testrail ([^"]*)"$/, (script) ->

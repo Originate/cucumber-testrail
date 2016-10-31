@@ -1,0 +1,10 @@
+testrail_url: "https://originateqa.testrail.net/index.php?/"
+
+suites:
+
+  - suite:
+      project_id: 1
+      project_symbol: 'CTR'
+      suite_id: 1
+      section_id: 1
+      testplan_id: 1

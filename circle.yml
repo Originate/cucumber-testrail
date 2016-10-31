@@ -5,10 +5,15 @@ machine:
 test:
 
   pre:
-    - node_modules/coffee-script/bin/coffee --compile --output lib/ src/
+    - node_modules/coffee-script/bin/coffee --compile --output dist/ src/
     - mkdir -p $CIRCLE_TEST_REPORTS/cucumber
 
   override:
     - cucumber-js --format json:$CIRCLE_TEST_REPORTS/cucumber/tests.cucumber --format pretty
 
-  
+  post:
+    - >
+      if [ "$CIRCLE_BRANCH" == "master" ]; then
+        node dist/index.js -c cucumber_testrail.yml -r $CIRCLE_TEST_REPORTS/cucumber/tests.cucumber -u $TESTRAIL_USERNAME -p $TESTRAIL_PASSWORD -i 'MASTER_UPDATE'
+      fi
+

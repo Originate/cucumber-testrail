@@ -1,6 +1,6 @@
 require 'require-yaml'
 
-TestRailService = require './testrail_service.coffee'
+TestRailService = require './testrail_service'
 
 # Reads and validates the configuration file for this tool
 class ConfigReader

@@ -2,9 +2,9 @@ co = require 'co'
 _ = require 'lodash'
 minimist = require 'minimist'
 
-ConfigReader = require './config_reader.coffee'
-CucumberResultReader = require './cucumber_result_reader.coffee'
-TestRailService = require './testrail_service.coffee'
+ConfigReader = require './config_reader'
+CucumberResultReader = require './cucumber_result_reader'
+TestRailService = require './testrail_service'
 
 runService = co.wrap (symbol, config, opts, testrail_metrics) =>
   suite_config = _projectSuites config.suites, symbol

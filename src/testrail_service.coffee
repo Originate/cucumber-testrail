@@ -8,7 +8,7 @@ REQUESTS =
   addResults: 'add_results_for_cases/{{testrun_id}}'
 REQUIRED_CONFIG_FIELDS = ['project_id', 'project_symbol', 'testplan_id']
 
-RequestManager = require './request_manager.coffee'
+RequestManager = require './request_manager'
 
 class TestRailService
 

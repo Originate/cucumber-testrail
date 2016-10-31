@@ -26,13 +26,13 @@ class CucumberResultReader
 
   _examineScenario: (steps) ->
     status_id = TESTRAIL_STATUSES.PASSED
-    totalPassed = 0
+    result = status_id: TESTRAIL_STATUSES.PASSED, comment: 'Passed on CircleCI!'
     steps.forEach (step) ->
       switch step.result.status
-        when 'passed' then totalPassed += 1
-        when 'failed' then return status_id: TESTRAIL_STATUSES.FAILED, comment: step.result.error_message
+        when 'passed', 'skipped' then return
+        when 'failed' then result = status_id: TESTRAIL_STATUSES.FAILED, comment: step.result.error_message
         else throw new Error "unknown step result status: #{step.result.status}"
-    status_id: TESTRAIL_STATUSES.PASSED, comment: 'Passed on CircleCI!'
+    result
 
 
   _parseName: (name) ->

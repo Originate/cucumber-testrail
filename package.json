@@ -11,6 +11,9 @@
     "url": "git://github.com/Originate/cucumber-testrail.git"
   },
   "author": "Doreen Hakimi",
+  "bin": {
+    "cucumber-testrail": "bin/cucumber-testrail"
+  },
   "license": "MIT",
   "devDependencies": {
     "co": "4.6.0",

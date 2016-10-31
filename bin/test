@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-node_modules/coffee-script/bin/coffee --compile --output lib/ src/
+node_modules/coffee-script/bin/coffee --compile --output dist/ src/
 cucumber-js
 
