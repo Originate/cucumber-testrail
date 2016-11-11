@@ -1,12 +1,9 @@
-_ = require 'lodash'
-
 PARAMS = ['project_id', 'suite_id', 'section_id', 'testrun_id', 'testplan_id']
 FILTERS = ['section_id', 'suite_id']
 REQUESTS =
   addPlanEntry: 'add_plan_entry/{{testplan_id}}'
   getCases: 'get_cases/{{project_id}}&suite_id={{suite_id}}&section_id={{section_id}}'
   addResults: 'add_results_for_cases/{{testrun_id}}'
-REQUIRED_CONFIG_FIELDS = ['project_id', 'project_symbol', 'testplan_id']
 
 RequestManager = require './request_manager'
 
@@ -20,16 +17,6 @@ class TestRailService
     case_ids = yield @_fetchCases()
     testrun_id = yield @_generateTestRun case_ids
     yield @_addResults testrun_id
-
-
-  validateConfig: ->
-    throw new Error 'cucumber_testrail.yml is missing suites' unless @config.suites.length
-    @config.suites.forEach (config, index) ->
-      params = Object.keys config
-      missingFields = _.compact REQUIRED_CONFIG_FIELDS.map (field) ->
-        field unless field in params
-      return unless missingFields.length
-      throw new Error "cucumber_testrail.yml is missing these required fields for suite #{index + 1}: #{missingFields}"
 
 
   _addResults: (testrun_id) ->

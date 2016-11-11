@@ -1,0 +1,13 @@
+testrail_url: "http://localhost:7000"
+
+suites:
+
+  - suite:
+      suite_id: 1
+      section_id: 10
+
+  - suite:
+      project_id: 2
+      project_symbol: 'DSPlaces'
+      suite_id: 1
+      testplan_id: 85

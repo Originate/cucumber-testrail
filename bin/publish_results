@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+if [ "$CIRCLE_BRANCH" == "master" ]; then
+  node dist/index.js -c cucumber_testrail.yml -r $CIRCLE_TEST_REPORTS/cucumber/tests.cucumber -u $TESTRAIL_USERNAME -p $TESTRAIL_PASSWORD -i 'MASTER_UPDATE'
+fi
+

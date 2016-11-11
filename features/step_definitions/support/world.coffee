@@ -4,8 +4,8 @@ module.exports = ->
 
   @World = ->
     @execute_script = (cmd) ->
-      @msg = ''
       new Promise (resolve, reject) ->
+        @msg = ''
         proc = spawn "/bin/sh", ['-c', cmd], cwd: path.join __dirname, '../../../'
         proc.stdout.on 'data', (data) =>
           return if data is undefined
