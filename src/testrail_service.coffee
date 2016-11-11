@@ -13,7 +13,6 @@ RequestManager = require './request_manager'
 class TestRailService
 
   constructor: (@config = {}, @opts = {}, @suite_config = {}, @metrics = []) ->
-    #module for making api requests
     @request_manager = new RequestManager @opts
 
 
@@ -59,8 +58,8 @@ class TestRailService
   _generateUrl: (type, opts={}) ->
     action = REQUESTS[type] or ''
     PARAMS.forEach (key) =>
-      action = action.replace("{{#{key}}}", @suite_config[key]) if @suite_config[key] isnt '' and opts[key] is undefined
-      action = action.replace("&#{key}={{#{key}}}", '') unless @suite_config[key] isnt '' and FILTERS.indexOf(key) isnt -1
+      action = action.replace("{{#{key}}}", @suite_config[key]) if @suite_config[key] isnt undefined and opts[key] is undefined
+      action = action.replace("&#{key}={{#{key}}}", '') unless @suite_config[key] isnt undefined and FILTERS.indexOf(key) isnt -1
       action = action.replace("{{#{key}}}", opts[key]) unless opts[key] is undefined
     "#{@config.testrail_url}/api/v2/#{action}"
 

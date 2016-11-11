@@ -1,4 +1,4 @@
-testrail_url: "https://drseuss.testrail.net/index.php?/"
+testrail_url: "http://localhost:7000"
 
 suites:
 
