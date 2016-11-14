@@ -1,4 +1,3 @@
-HttpRecorder = require 'record-http'
 express = require 'express'
 
 module.exports = ->
@@ -15,9 +14,7 @@ module.exports = ->
     api_router.post '/add_results_for_cases/:params', (req, res) ->
       res.json []
     @app.use '/api/v2', api_router
-    @listener = new HttpRecorder()
 
 
   @After ->
     @server.close()
-    @listener.close()

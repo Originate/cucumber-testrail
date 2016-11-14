@@ -1,30 +1,34 @@
 {
   "name": "cucucmber-testrail",
   "version": "0.1.0",
-  "description": "Pushes Cucumber Results from CircleCI to TestRails",
-  "main": "src/index.coffee",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/Originate/cucumber-testrail.git"
-  },
   "author": "Doreen Hakimi",
   "bin": {
     "cucumber-testrail": "bin/cucumber-testrail"
   },
-  "license": "MIT",
-  "devDependencies": {
+  "description": "Pushes Cucumber Results from CircleCI to TestRails",
+  "dependencies": {
     "co": "4.6.0",
-    "coffee-script": "1.11.1",
-    "cucumber": "1.3.1",
-    "expect.js": "0.3.1",
-    "express": "4.14.0",
     "lodash": "4.16.4",
     "minimist": "1.2.0",
     "mz": "2.4.0",
     "request-promise": "4.1.1",
     "require-yaml": "0.0.1"
+  },
+  "devDependencies": {
+    "coffee-script": "1.11.1",
+    "cucumber": "1.3.1",
+    "dependency-lint": "4.2.0",
+    "expect.js": "0.3.1",
+    "express": "4.14.0"
+  },
+  "files": [],
+  "license": "MIT",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Originate/cucumber-testrail.git"
+  },
+  "scripts": {
+    "test": "./bin/test"
   }
 }

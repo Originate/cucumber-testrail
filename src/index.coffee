@@ -8,23 +8,6 @@ ConfigReader = require './config_reader'
 CucumberResultReader = require './cucumber_result_reader'
 TestRailService = require './testrail_service'
 
-runService = co.wrap (symbol, config, opts, testrail_metrics) =>
-  suite_config = _projectSuites config.suites, symbol
-  return unless _needsUpdate symbol, suite_config, testrail_metrics
-  yield (new TestRailService config, opts, suite_config[0], testrail_metrics[symbol]).run()
-
-
-_needsUpdate = (symbol, suite_config, testrail_metrics) ->
-  if suite_config.length is 0
-    throw new Error "symbol #{symbol} found in cucumber results is not represented in cucumber_testrail.yml"
-  return false if testrail_metrics[symbol].length is 0
-  true
-
-
-_projectSuites = (suites, symbol) ->
-  suite_config = suites.filter ({project_symbol}) -> project_symbol is symbol
-
-
 co ->
   try
     alias = u: 'username', p: 'password', c: 'config', r: 'result', i: 'runid'
@@ -42,6 +25,8 @@ co ->
     config = config_reader.parse()
     cucumber_reader = new CucumberResultReader config, opts.result
     testrail_metrics = yield cucumber_reader.parse()
-    yield Promise.all Object.keys(testrail_metrics).map (symbol) => runService symbol, config, opts, testrail_metrics
+    yield Promise.all Object.keys(testrail_metrics).map (symbol) =>
+      testrail_service = new TestRailService symbol, config, opts, testrail_metrics
+      testrail_service.sendTestResults()
   catch e
-    console.log "Error processing request: #{e}"
+    console.log "#{e}"

@@ -9,8 +9,7 @@ class CucumberResultReader
 
 
   parse: () ->
-    file = fs.readFileSync @file
-    results = file.toString()
+    results = fs.readFileSync @file, 'utf8'
     testRailMetrics = {}
     @symbols.forEach (item) -> testRailMetrics[item] = []
     JSON.parse(results).forEach (result) =>

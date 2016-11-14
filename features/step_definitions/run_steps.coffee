@@ -6,12 +6,16 @@ module.exports = ->
     @server = @app.listen port
 
 
-  @When /^I run the script "cucumber-testrail ([^"]*)"$/, (script) ->
+  @When /^I run the script:$/, (script) ->
+    script = script.replace 'cucumber-testrail ', ''
+    script = script.replace /\n\s*/g, ' '
     @resp = yield @execute_script "bin/cucumber-testrail #{script}"
 
 
-  @Then /^my output (doesn't )?contain(s)? the following text:$/, (doesnt, _a, output) ->
-    if doesnt
-      expect(@resp).to.not.contain(output.trim())
-    else
-      expect(@resp).to.contain(output.trim())
+  @Then /^I see the (success message|error):$/, (_, output) ->
+      expect(@resp).to.contain output.trim()
+
+
+  @Then /^the TestRail update fails to send$/, ->
+      expect(@resp).to.not.contain "Successfully added the following results"
+
