@@ -12,7 +12,7 @@ module.exports = ->
     @resp = yield @execute_script "bin/cucumber-testrail #{script}"
 
 
-  @Then /^I see the (success message|error|notification):$/, (_, output) ->
+  @Then /^I see the (success message|error):$/, (_, output) ->
       expect(@resp).to.contain output.trim()
 
 

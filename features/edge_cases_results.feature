@@ -55,7 +55,7 @@ Feature: Run CucumberTestRail with invalid results.json
 
 
   @TestRail-CTR-12
-  Scenario: Running CucumberTestRail with results for only one test suite skips update and shows appropriate message
+  Scenario: Running CucumberTestRail with results for only one test suite still updates both suites
     Given a TestRail API at http://localhost:7000
     When I run the script:
     """
@@ -65,9 +65,9 @@ Feature: Run CucumberTestRail with invalid results.json
                       -p 'password'
                       -i 'QA'
     """
-    Then I see the notification:
+    Then I see the success message:
     """
-    No test results to report for suite with symbol DSFish. Skipping this update.
+    Successfully added the following results for project symbol DSFish to TestRail. Visit http://localhost:7000/runs/view/5 to access.
     """
     And I see the success message:
     """
