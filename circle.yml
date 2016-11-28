@@ -13,3 +13,10 @@ test:
 
   post:
     - ./bin/publish_results
+
+deployment:
+  publish:
+    branch: release
+    commands:
+      - npm set //registry.npmjs.org/:_authToken $AUTH_TOKEN
+      - npm publish

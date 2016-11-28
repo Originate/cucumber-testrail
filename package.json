@@ -1,6 +1,6 @@
 {
-  "name": "cucucmber-testrail",
-  "version": "0.1.0",
+  "name": "cucumber-testrail",
+  "version": "0.0.1",
   "author": "Doreen Hakimi",
   "bin": {
     "cucumber-testrail": "bin/cucumber-testrail"
@@ -22,7 +22,13 @@
     "expect.js": "0.3.1",
     "express": "4.14.0"
   },
-  "files": [],
+  "files": [
+    "bin/cucumber-testrail",
+    "dist",
+    "README.md",
+    "FAQs.md",
+    "LICENSE"
+  ],
   "license": "MIT",
   "main": "dist/index.js",
   "repository": {
