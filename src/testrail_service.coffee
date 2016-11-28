@@ -13,7 +13,7 @@ class TestRailService
   sendTestResults: co.wrap ->
     unless @suite_config.length
       throw new Error "symbol #{@symbol} found in cucumber results is not represented in cucumber_testrail.yml"
-    return unless @needs_update
+    return console.log "No test results to report for suite with symbol #{@symbol}. Skipping this update." unless @needs_update
     case_ids = yield @api.fetchCases()
     testrun_id = yield @api.generateTestRun case_ids
     yield @api.addResults testrun_id

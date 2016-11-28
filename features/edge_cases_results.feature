@@ -52,3 +52,24 @@ Feature: Run CucumberTestRail with invalid results.json
     Error: unknown step result status: invalidStepResult
     """
     And the TestRail update fails to send
+
+
+  @TestRail-CTR-12
+  Scenario: Running CucumberTestRail with results for only one test suite skips update and shows appropriate message
+    Given a TestRail API at http://localhost:7000
+    When I run the script:
+    """
+    cucumber-testrail -c sample_files/cucumber_testrail_valid.yml
+                      -r sample_files/results_valid2.json
+                      -u 'user@ctr.co'
+                      -p 'password'
+                      -i 'QA'
+    """
+    Then I see the notification:
+    """
+    No test results to report for suite with symbol DSFish. Skipping this update.
+    """
+    And I see the success message:
+    """
+    Successfully added the following results for project symbol DSPlaces to TestRail. Visit http://localhost:7000/runs/view/5 to access.
+    """
