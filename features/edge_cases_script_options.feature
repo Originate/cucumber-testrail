@@ -9,7 +9,7 @@ Feature: Run CucumberTestRail with invalid script options
     """
     Then I see the error:
     """
-    Error: script is missing these required options: username,password,result,config
+    Error: script is missing these required options: result,username,password,config
     """
     And the TestRail update fails to send
 

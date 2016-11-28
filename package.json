@@ -7,6 +7,7 @@
   },
   "description": "Pushes Cucumber Results from CircleCI to TestRails",
   "dependencies": {
+    "cli-table": "0.3.1",
     "co": "4.6.0",
     "lodash": "4.16.4",
     "minimist": "1.2.0",

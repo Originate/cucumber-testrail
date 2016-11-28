@@ -16,17 +16,24 @@ Setup on TestRail
 --
 
 1) Create New Project and enter project overview. The last number in the resulting url is your *project_id*
+
 2) Navigate to *Test Cases* tab
+
 3) Generate a new section and add test cases for your suite
+
 4) Navigate to *Test Runs & Results* tab
+
 5) Click on *Add Test Plan* Button
+
 6) Give your test plan a name and click *Add Test Plan*. The last number in the resulting url is your *testplan_id*
 
 Setup on CircleCI
 --
 
 1) Enable CircleCI builds for your repository
+
 2) Add your username and password as environment variables in the CircleCI dashboard's project settings
+
 <img alt="CircleCI Environment Variables Dashboard View" src="images/circle_env.png"/>
 
 
@@ -47,6 +54,7 @@ Setup on Your Project
         testplan_id: [your testplan_id]
   ```
   In this configuration, you will have one suite. Tags with the SYM symbol in your cucumber tags will correlate with this TestRail suite.
+
 2) In your project source, add the following `circle.yml` file:
   ```
   machine:
@@ -66,13 +74,14 @@ Setup on Your Project
     post:
       - ./bin/publish_results
   ```
-  This repository publishes results on every merge to master as a simple example. [Take a look.](https://github.com/Originate/cucumber-testrail/blob/master/bin/publish_results)
-  If you are interested in configuring nightly test runs, you can do that too! [Read the documentation.](https://circleci.com/docs/nightly-builds/)
+  Check out the [FAQs](/FAQs.md) page about configuring nightly test runs.
+
 3) Add `bin/publish` or any subsitute that will define when the builds should publish results to testrail:
   ```
   ./node_modules/.bin/cucumber-testrail -c cucumber_testrail.yml -r $CIRCLE_TEST_REPORTS/cucumber/tests.cucumber -u $TESTRAIL_USERNAME -p $TESTRAIL_PASSWORD -i '[SOME MESSAGE]'
   ```
   Here, [SOME MESSAGE] could denote an environment or and action. You can remove that option if you don't need it.
+
 4) Write Cucumber Tests with proper TestRail tags!
   In order to add feature tests that correlate with the above sample suite, add the following tag to the top of your scenario:
   ```
@@ -80,6 +89,10 @@ Setup on Your Project
     Scenario: Logging in to the Application
   ```
   In this example, this scenario maps to case_id 1 from your SYM test suite
+
 5) Merge tests and watch the update!
 
+FAQs
+--
 
+See our [Frequently Asked Questions page](/FAQs.md) for other important information before you get started.

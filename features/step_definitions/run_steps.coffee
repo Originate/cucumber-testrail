@@ -12,8 +12,8 @@ module.exports = ->
     @resp = yield @execute_script "bin/cucumber-testrail #{script}"
 
 
-  @Then /^I see the (success message|error):$/, (_, output) ->
-      expect(@resp).to.contain output.trim()
+  @Then /^I see the (success message|error|table):$/, (_, output) ->
+    expect(@resp).to.contain output.trim()
 
 
   @Then /^the TestRail update fails to send$/, ->
